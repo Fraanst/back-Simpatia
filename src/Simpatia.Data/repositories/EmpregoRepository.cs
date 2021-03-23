@@ -39,7 +39,7 @@ namespace Simpatia.Data.repositories
             return emprego.ConverterParaDomain();
         }
 
-        public async Task<IList<Emprego>> ObterEmpregos()
+        public async Task<IList<Emprego>> ObterEmpregos(DateTime inicio, DateTime fim)
         {
            var empregos = new List<Emprego>();
             await _empregos.AsQueryable().ForEachAsync(r =>

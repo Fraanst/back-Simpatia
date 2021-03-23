@@ -38,7 +38,7 @@ namespace Simpatia.Data.repositories
             return adocao.ConverterParaDomain();
         }
 
-        public async Task<IList<Adocao>> ObterAdocoes()
+        public async Task<IList<Adocao>> ObterAdocoes(DateTime inicio, DateTime fim)
         {
            var adocao = new List<Adocao>();
             await _adocao.AsQueryable().ForEachAsync(r =>

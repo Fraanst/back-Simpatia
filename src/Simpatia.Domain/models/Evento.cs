@@ -2,8 +2,9 @@ namespace Simpatia.Domain.models
 {
     public class Evento
     {
-        public Evento(string eventoId, string imagemId, string descricao, string telefone, string site, string data, string endereco, string cidade)
+        public Evento(string eventoId, string nome, string imagemId, string descricao, string telefone, string site, string data, string endereco, string cidade)
         {
+            Nome = nome;
             EventoId = eventoId;
             ImagemId = imagemId;
             Descricao = descricao;
@@ -15,6 +16,7 @@ namespace Simpatia.Domain.models
         }
 
         public string EventoId { get; set; }
+        public string Nome { get; set; }
         public string ImagemId { get; set; }
         public string Descricao { get; set; }
         public string Telefone { get; set; }

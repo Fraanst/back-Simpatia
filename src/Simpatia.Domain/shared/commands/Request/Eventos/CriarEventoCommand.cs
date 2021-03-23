@@ -2,9 +2,10 @@ using Flunt.Validations;
 
 namespace Simpatia.Domain.shared.commands.Eventos
 {
-    public class CriarEventosCommand : CommandRequest
+    public class CriarEventoCommand : CommandRequest
     {
         public string ImagemId { get; set; }
+        public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Telefone { get; set; }
         public string Site { get; set; }

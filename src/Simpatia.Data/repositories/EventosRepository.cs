@@ -38,7 +38,7 @@ namespace Simpatia.Data.repositories
             return evento.ConverterParaDomain();
         }
 
-        public async Task<IList<Evento>> ObterEventos()
+        public async Task<IList<Evento>> ObterEventos(DateTime inicio, DateTime fim)
         {
             var eventos = new List<Evento>();
             await _eventos.AsQueryable().ForEachAsync(r =>

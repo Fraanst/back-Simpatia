@@ -39,7 +39,7 @@ namespace Simpatia.Data.repositories
             return restaurante.ConverterParaDomain();
         }
 
-        public async Task<IList<Restaurante>> ObterRestaurantes()
+        public async Task<IList<Restaurante>> ObterRestaurantes(DateTime inicio, DateTime fim)
         {
             var restaurantes = new List<Restaurante>();
             await _restaurantes.AsQueryable().ForEachAsync(r =>

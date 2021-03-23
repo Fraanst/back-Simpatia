@@ -10,6 +10,7 @@ namespace Simpatia.Data.schemas
      [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId _id { get; set; }
         public string EventoId { get; set; }
+        public string Nome { get; set; }
         public string ImagemId { get; set; }
         public string Descricao { get; set; }
         public string Telefone { get; set; }
@@ -24,6 +25,7 @@ namespace Simpatia.Data.schemas
         {
             var restaurante = new Evento(
                 documento.EventoId,
+                documento.Nome,
                 documento.ImagemId,
                 documento.Descricao,
                 documento.Telefone,
