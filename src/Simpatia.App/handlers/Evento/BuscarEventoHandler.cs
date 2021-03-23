@@ -23,7 +23,7 @@ namespace Simpatia.App.handlers.Evento
                 return null;
 
             var evento = await _repository.ObterPorId(request.eventoId);
-            return CreateResponse(evento, "Eventos encontrado com sucesso!");
+            return CreateResponse(evento, "Evento encontrado com sucesso!");
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Simpatia.Data.repositories
                 ImagemId = restauranteDto.ImagemId,
                 Site = restauranteDto.Site,
                 Descricao = restauranteDto.Descricao,
-                Endereço = restauranteDto.Endereço,
+                Endereço = restauranteDto.Endereco,
                 Data = Convert.ToDateTime(restauranteDto.Data),
                 Telefone = restauranteDto.Telefone,
                 Cidade = restauranteDto.Cidade

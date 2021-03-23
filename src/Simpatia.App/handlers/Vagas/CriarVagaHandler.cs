@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Simpatia.Domain.ApiDto;
 using Simpatia.Domain.commands;
 using Simpatia.Domain.interfaces;
 using Simpatia.Domain.shared.commands;
@@ -20,7 +22,21 @@ namespace Simpatia.App.handlers
 
         public async Task<CommandResponse> Handle(CriarVagaCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var vaga = await _repository.Inserir(new EmpregoDto{
+                VagaId = new Guid(),
+                Cargo = request.Cargo,
+                Descricao = request.Descricao,
+                Data = request.Data,
+                Telefone = request.Telefone,
+                Empresa = request.Empresa,
+                Endereco = request.Endereço,
+                Cidade = request.Cidade,
+                Salario = request.Salario
+            });
+            return CreateResponse(vaga, "Vaga cadastrado com sucesso!");
         }
     }
 }

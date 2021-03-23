@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Simpatia.Domain.ApiDto;
 using Simpatia.Domain.interfaces;
 using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Restaurante;
@@ -18,9 +20,23 @@ namespace Simpatia.App.handlers.Restaurante
             _mediator = mediator;
         }
 
-        public Task<CommandResponse> Handle(CriarRestauranteCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(CriarRestauranteCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var restaurante = await _repository.Inserir(new RestaurantesDto{
+                RestauranteId = new Guid(),
+                ImagemId = request.ImagemId,
+                Site = request.Site,
+                Descricao = request.Descricao,
+                Data = request.Data,
+                Telefone = request.Telefone,
+                Endereco = request.Endereco,
+                Cidade = request.Cidade,
+                Salario = request.Salario
+            });
+            return CreateResponse(restaurante, "Restaurante cadastrado com sucesso!");
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Simpatia.Domain.shared.commands.Restaurante
         public string Data { get; set; }
         public string Telefone { get; set; }
         public string Cidade { get; set; }
+        public string Salario { get; set; }
 
         public override void Validate()
         {

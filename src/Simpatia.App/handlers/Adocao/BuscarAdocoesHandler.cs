@@ -23,7 +23,7 @@ namespace Simpatia.App.handlers.Adocao
                 Convert.ToDateTime(request.DataInicial),
                 Convert.ToDateTime(request.DataFinal));
 
-            return CreateResponse(adocao, "Adocoes encontrado com sucesso!");
+            return CreateResponse(adocao, "Adocoes encontradas com sucesso!");
         }
     }
 }

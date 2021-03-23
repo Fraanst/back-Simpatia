@@ -15,7 +15,7 @@ namespace Simpatia.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<ObjectResult> InserirEvento([FromBody]CriarEventosCommand command)
+        public async Task<ObjectResult> InserirEvento([FromBody]CriarEventoCommand command)
         {
             return await BaseResult(command);
         }

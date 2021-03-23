@@ -18,9 +18,13 @@ namespace Simpatia.App.handlers.Vagas
             _mediator = mediator;
         }
 
-        public Task<CommandResponse> Handle(BuscarVagaCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(BuscarVagaCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var vaga = await _repository.ObterPorId(request.vagaId);
+            return CreateResponse(vaga, "Vagas encontrado com sucesso!");
         }
     }
 }

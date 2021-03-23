@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -18,9 +19,16 @@ namespace Simpatia.App.handlers.Noticia
             _mediator = mediator;
         }
 
-        public Task<CommandResponse> Handle(BuscarNoticiasCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(BuscarNoticiasCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var noticia = await _repository.ObterNoticias(
+                Convert.ToDateTime(request.DataInicial),
+                Convert.ToDateTime(request.DataFinal));
+
+            return CreateResponse(noticia, "Noticias encontradas com sucesso!");
         }
     }
 }

@@ -12,7 +12,11 @@ namespace Simpatia.App.handlers
 
         public Task<CommandResponse> Handle(BuscarRestaurantesCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var restaurante = await _repository.ObterPorId(request.restauranteId);
+            return CreateResponse(restaurante, "Restaurante encontrado com sucesso!");
         }
     }
 }

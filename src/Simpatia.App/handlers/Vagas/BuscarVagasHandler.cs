@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -20,7 +21,13 @@ namespace Simpatia.App.handlers.Vagas
 
         public async Task<CommandResponse> Handle(BuscarVagasCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var restaurante = await _repository.ObterEmpregos(
+                Convert.ToDateTime(request.DataInicial),
+                Convert.ToDateTime(request.DataFinal));
+            return CreateResponse(restaurante, "Restaurantes encontrados com sucesso!");
         }
     }
 }

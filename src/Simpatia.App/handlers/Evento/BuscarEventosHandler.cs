@@ -28,7 +28,7 @@ namespace Simpatia.App.handlers.Evento
                 Convert.ToDateTime(request.DataInicial),
                 Convert.ToDateTime(request.DataFinal));
 
-            return CreateResponse(evento, "Eventos encontrado com sucesso!");
+            return CreateResponse(evento, "Eventos encontrados com sucesso!");
         }
     }
 }

@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Simpatia.Domain.ApiDto;
 using Simpatia.Domain.interfaces;
 using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Noticias;
@@ -18,9 +20,19 @@ namespace Simpatia.App.handlers
             _mediator = mediator;
         }
 
-        public Task<CommandResponse> Handle(CriarNoticiaCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(CriarNoticiaCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (request.Valid)
+                return null;
+
+            var adocao = await _repository.Inserir(new NoticiaDto{
+                NoticiaId = new Guid(),
+                ImagemId = request.ImagemId,
+                Descricao = request.Descricao,
+                Data = request.Data,
+                Fonte = request.Fonte
+            });
+            return CreateResponse(adocao, "Noticia cadastrado com sucesso!");
         }
     }
 }
