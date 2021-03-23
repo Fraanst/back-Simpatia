@@ -2,6 +2,7 @@ namespace Simpatia.Domain.models
 {
     public class Adocao
     {
+        public Adocao() {}
         public Adocao(string adocaoId, string imagemId, string tipo, string descricao, string endereco, string telefone, string cidade, string data)
         {
             AdocaoId = adocaoId;

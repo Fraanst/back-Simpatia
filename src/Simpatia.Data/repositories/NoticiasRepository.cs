@@ -37,10 +37,13 @@ namespace Simpatia.Data.repositories
         public async Task<IList<Noticia>> ObterNoticias(DateTime inicio, DateTime fim)
         {
            var noticias = new List<Noticia>();
-            await _Noticias.AsQueryable().ForEachAsync(r =>
+            await _Noticias.AsQueryable().ForEachAsync(_ =>
                 {
-                    var noticia = r.ConverterParaDomain();
-                    noticias.Add(noticia);
+                    if (_.Data >= inicio && _.Data <= fim)
+                    {
+                        var noticia = _.ConverterParaDomain();
+                        noticias.Add(noticia);
+                    }
                 });
             return noticias;
         }

@@ -42,10 +42,13 @@ namespace Simpatia.Data.repositories
         public async Task<IList<Emprego>> ObterEmpregos(DateTime inicio, DateTime fim)
         {
            var empregos = new List<Emprego>();
-            await _empregos.AsQueryable().ForEachAsync(r =>
+            await _empregos.AsQueryable().ForEachAsync(_ =>
                 {
-                    var emprego = r.ConverterParaDomain();
-                    empregos.Add(emprego);
+                    if (_.Data >= inicio && _.Data <= fim)
+                    {
+                        var emprego = _.ConverterParaDomain();
+                        empregos.Add(emprego);
+                    }
                 });
             return empregos;
         }

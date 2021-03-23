@@ -42,10 +42,13 @@ namespace Simpatia.Data.repositories
         public async Task<IList<Restaurante>> ObterRestaurantes(DateTime inicio, DateTime fim)
         {
             var restaurantes = new List<Restaurante>();
-            await _restaurantes.AsQueryable().ForEachAsync(r =>
+            await _restaurantes.AsQueryable().ForEachAsync(_ =>
                 {
-                    var restaurante = r.ConverterParaDomain();
-                    restaurantes.Add(restaurante);
+                    if (_.Data >= inicio && _.Data <= fim)
+                    {
+                        var restaurante = _.ConverterParaDomain();
+                        restaurantes.Add(restaurante);
+                    }
                 });
             return restaurantes;
         }

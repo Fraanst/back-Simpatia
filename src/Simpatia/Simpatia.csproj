@@ -2,11 +2,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Simpatia.Domain\Simpatia.Domain.csproj" />
+    <ProjectReference Include="..\Simpatia.Data\Simpatia.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Flunt" Version="1.0.4" />
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <PropertyGroup>
