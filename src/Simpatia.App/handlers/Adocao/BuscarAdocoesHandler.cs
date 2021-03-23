@@ -14,11 +14,14 @@ namespace Simpatia.App.handlers.Adocao
         private readonly IAdocaoRepository _repository;
         private readonly IMediator _mediator;
 
+        public BuscarAdocoesHandler(IAdocaoRepository repository, IMediator mediator)
+        {
+            _repository = repository;
+            _mediator = mediator;
+        }
+
         public async Task<CommandResponse> Handle(BuscarAdocoesCommand request, CancellationToken cancellationToken)
         {
-            if (request.Valid)
-                return null;
-
             var adocao = await _repository.ObterAdocoes(
                 Convert.ToDateTime(request.DataInicial),
                 Convert.ToDateTime(request.DataFinal));

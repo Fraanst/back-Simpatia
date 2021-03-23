@@ -22,9 +22,6 @@ namespace Simpatia.App.handlers
 
         public async Task<CommandResponse> Handle(CriarNoticiaCommand request, CancellationToken cancellationToken)
         {
-            if (request.Valid)
-                return null;
-
             var adocao = await _repository.Inserir(new NoticiaDto{
                 NoticiaId = new Guid(),
                 ImagemId = request.ImagemId,
