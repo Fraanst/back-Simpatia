@@ -18,10 +18,9 @@ namespace Simpatia.Data.repositories
 
         public async Task<Adocao> Inserir(AdocaoDto adocaoDto)
         {
-            var buscaAdocao =  await _adocao.FindAsync(r => r.AdocaoId.Equals(adocaoDto.AdocaoId));
             var adocao = new AdocaoSchema
             {
-                AdocaoId = adocaoDto.AdocaoId.ToString(),
+                AdocaoId = Guid.NewGuid().ToString().ToLower(),
                 ImagemId = adocaoDto.ImagemId,
                 Tipo = adocaoDto.Tipo,
                 Descricao = adocaoDto.Descricao,

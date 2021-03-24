@@ -18,7 +18,7 @@ namespace Simpatia.Data.repositories
         {
             var noticia = new NoticiasSchema
             {
-                NoticiaId = noticiaDto.NoticiaId.ToString(),
+                NoticiaId = Guid.NewGuid().ToString().ToLower(),
                 ImagemId = noticiaDto.ImagemId.ToString(),
                 Descricao = noticiaDto.Descricao,
                 Data = Convert.ToDateTime(noticiaDto.Data),

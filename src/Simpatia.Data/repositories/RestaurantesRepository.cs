@@ -18,10 +18,9 @@ namespace Simpatia.Data.repositories
 
        public async Task<Restaurante> Inserir(RestaurantesDto restauranteDto)
         {
-            var buscaRestaurante =  await _restaurantes.FindAsync(r => r.RestauranteId.Equals(restauranteDto.RestauranteId));
             var restaurante = new RestaurantesSchema
             {
-                RestauranteId = restauranteDto.RestauranteId.ToString(),
+                RestauranteId = Guid.NewGuid().ToString().ToLower(),
                 ImagemId = restauranteDto.ImagemId,
                 Site = restauranteDto.Site,
                 Descricao = restauranteDto.Descricao,
@@ -30,12 +29,8 @@ namespace Simpatia.Data.repositories
                 Telefone = restauranteDto.Telefone,
                 Cidade = restauranteDto.Cidade
             };
-            if (buscaRestaurante != null)
-            {
-                _restaurantes.ReplaceOne(e => e.RestauranteId.Equals(restaurante.RestauranteId), restaurante);
-                return restaurante.ConverterParaDomain();
-            }
-            _restaurantes.InsertOne(restaurante);
+
+            await _restaurantes.InsertOneAsync(restaurante);
             return restaurante.ConverterParaDomain();
         }
 

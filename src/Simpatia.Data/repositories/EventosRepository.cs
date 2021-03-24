@@ -20,7 +20,7 @@ namespace Simpatia.Data.repositories
             var buscaEvento =  await _eventos.FindAsync(r => r.EventoId.Equals(eventoDto.EventoId));
             var evento = new EventosSchema
             {
-                EventoId = eventoDto.EventoId.ToString(),
+                EventoId = Guid.NewGuid().ToString().ToLower(),
                 ImagemId = eventoDto.ImagemId,
                 Site = eventoDto.Site,
                 Descricao = eventoDto.Descricao,
@@ -29,12 +29,7 @@ namespace Simpatia.Data.repositories
                 Telefone = eventoDto.Telefone,
                 Cidade = eventoDto.Cidade
             };
-            if (buscaEvento != null)
-            {
-                _eventos.ReplaceOne(e => e.EventoId.Equals(evento.EventoId), evento);
-                return evento.ConverterParaDomain();
-            }
-            _eventos.InsertOne(evento);
+            await _eventos.InsertOneAsync(evento);
             return evento.ConverterParaDomain();
         }
 

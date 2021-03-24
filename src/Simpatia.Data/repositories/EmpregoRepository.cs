@@ -17,10 +17,9 @@ namespace Simpatia.Data.repositories
 
         public async Task<Emprego> Inserir(EmpregoDto empregoDto)
         {
-            var buscaEmprego =  await _empregos.Find(r => r.VagaId.Equals(empregoDto.VagaId)).FirstOrDefaultAsync();
             var emprego = new EmpregoSchema
             {
-                VagaId = empregoDto.VagaId.ToString(),
+                VagaId = Guid.NewGuid().ToString().ToLower(),
                 Cargo = empregoDto.Cargo,
                 Empresa = empregoDto.Empresa,
                 Descricao = empregoDto.Descricao,
@@ -30,12 +29,7 @@ namespace Simpatia.Data.repositories
                 Telefone = empregoDto.Telefone,
                 Cidade = empregoDto.Cidade
             };
-            if (buscaEmprego != null)
-            {
-                _empregos.ReplaceOne(e => e.VagaId.Equals(emprego.VagaId), emprego);
-                return emprego.ConverterParaDomain();
-            }
-            _empregos.InsertOne(emprego);
+            await _empregos.InsertOneAsync(emprego);
             return emprego.ConverterParaDomain();
         }
 
