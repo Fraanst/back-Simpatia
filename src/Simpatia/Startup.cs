@@ -1,4 +1,6 @@
+
 using System;
+using System.Reflection;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,13 +26,20 @@ namespace Simpatia
             services.AddControllers();
             var assembly = AppDomain.CurrentDomain.Load("Simpatia.Domain");
             services.AddMediatR(assembly);
-            services.AddTransient<IAdocaoRepository, AdocaoRepository>();
-            services.AddTransient<IEmpregoRepository, EmpregoRepository>();
-            services.AddTransient<IRestaurantesRepository, RestaurantesRepository>();
-            services.AddTransient<INoticiasRepository, NoticiasRepository>();
-            services.AddTransient<IEventosRepository, EventosRepository>();
+            services.AddSingleton(Configuration);
+            services.AddSingleton<Data.MongoDB>();
+            AddRepositoriesServices(services);
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
         }
+        private static void AddRepositoriesServices(IServiceCollection services)
+        {
+            services.AddScoped<IAdocaoRepository, AdocaoRepository>();
+            services.AddScoped<IEmpregoRepository, EmpregoRepository>();
+            services.AddScoped<IRestaurantesRepository, RestaurantesRepository>();
+            services.AddScoped<INoticiasRepository, NoticiasRepository>();
+            services.AddScoped<IEventosRepository, EventosRepository>();
 
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

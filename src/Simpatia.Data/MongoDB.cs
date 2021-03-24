@@ -30,7 +30,8 @@ namespace Simpatia.Data
                 BsonClassMap.RegisterClassMap<AdocaoSchema>(i =>
                 {
                     i.AutoMap();
-                    i.MapIdMember(c => c.AdocaoId);
+                    i.MapIdMember(c => c._id);
+                    i.MapMember(c => c.AdocaoId);
                     i.MapMember(c => c.Cidade);
                     i.MapMember(c => c.Descricao);
                     i.MapMember(c => c.Data);
@@ -48,7 +49,8 @@ namespace Simpatia.Data
                 BsonClassMap.RegisterClassMap<EmpregoSchema>(i =>
                 {
                     i.AutoMap();
-                    i.MapIdMember(c => c.VagaId);
+                    i.MapIdMember(c => c._id);
+                    i.MapMember(c => c.VagaId);
                     i.MapMember(c => c.Cargo);
                     i.MapMember(c => c.Descricao);
                     i.MapMember(c => c.Empresa);
@@ -67,7 +69,8 @@ namespace Simpatia.Data
                 BsonClassMap.RegisterClassMap<EventosSchema>(i =>
                 {
                     i.AutoMap();
-                    i.MapIdMember(c => c.EventoId);
+                    i.MapIdMember(c => c._id);
+                    i.MapMember(c => c.EventoId);
                     i.MapMember(c => c.Nome);
                     i.MapMember(c => c.Descricao);
                     i.MapMember(c => c.ImagemId);
@@ -86,7 +89,8 @@ namespace Simpatia.Data
                 BsonClassMap.RegisterClassMap<NoticiasSchema>(i =>
                 {
                     i.AutoMap();
-                    i.MapIdMember(c => c.NoticiaId);
+                    i.MapIdMember(c => c._id);
+                    i.MapMember(c => c.NoticiaId);
                     i.MapMember(c => c.Descricao);
                     i.MapMember(c => c.ImagemId);
                     i.MapMember(c => c.Data);
@@ -101,7 +105,8 @@ namespace Simpatia.Data
                 BsonClassMap.RegisterClassMap<RestaurantesSchema>(i =>
                 {
                     i.AutoMap();
-                    i.MapIdMember(c => c.RestauranteId);
+                    i.MapIdMember(c => c._id);
+                    i.MapMember(c => c.RestauranteId);
                     i.MapMember(c => c.Descricao);
                     i.MapMember(c => c.ImagemId);
                     i.MapMember(c => c.Data);

@@ -8,7 +8,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Restaurante;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers.Restaurante
+namespace Simpatia.Domain.handlers.Restaurante
 {
     public class CriarRestauranteHandler : CommandHandler, IRequestHandler<CriarRestauranteCommand, CommandResponse>
     {

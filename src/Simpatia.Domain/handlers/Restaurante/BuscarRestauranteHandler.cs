@@ -6,7 +6,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Restaurante;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers
+namespace Simpatia.Domain.handlers
 {
     public class BuscarRestauranteHandler : CommandHandler, IRequestHandler<BuscarRestauranteCommand, CommandResponse>
     {

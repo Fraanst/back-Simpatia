@@ -8,7 +8,7 @@ using Simpatia.Domain.interfaces;
 using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers
+namespace Simpatia.Domain.handlers
 {
     public class CriarVagaHandler : CommandHandler, IRequestHandler<CriarVagaCommand, CommandResponse>
     {

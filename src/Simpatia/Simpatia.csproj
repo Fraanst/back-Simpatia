@@ -7,8 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Flunt" Version="1.0.4" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="4.1.0" />
   </ItemGroup>
 
   <PropertyGroup>

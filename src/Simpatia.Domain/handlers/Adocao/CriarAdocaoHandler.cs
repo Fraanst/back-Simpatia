@@ -7,7 +7,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Adocao;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers.Adocao
+namespace Simpatia.Domain.handlers.Adocao
 {
     public class CriarAdocaoHandler : CommandHandler, IRequestHandler<CriarAdocaoCommand, CommandResponse>
     {

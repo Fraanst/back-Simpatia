@@ -6,7 +6,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Vagas;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers.Vagas
+namespace Simpatia.Domain.handlers.Vagas
 {
     public class BuscarVagaHandler : CommandHandler, IRequestHandler<BuscarVagaCommand, CommandResponse>
     {

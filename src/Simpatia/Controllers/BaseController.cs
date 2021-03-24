@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,9 @@ namespace Simpatia.Controllers
                 var result = await _mediator.Send(request);
                 return StatusCode(result.StatusCode, result);
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, new CommandResponse(500, "Ops, algo deu errado", null));
+                return StatusCode(500, new CommandResponse(500, "Ops, algo deu errado", e.Message));
             }
         }
     }

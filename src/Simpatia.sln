@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpatia.Domain", "Simpatia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpatia.Data", "Simpatia.Data\Simpatia.Data.csproj", "{C68D7EEC-00D9-4FCF-808B-A61FCFCDD432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpatia.App", "Simpatia.App\Simpatia.App.csproj", "{305CE4C5-F0C2-4462-B1CD-1FDE06B8E41F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpatia", "Simpatia\Simpatia.csproj", "{73012B18-111F-4CC8-8F00-A0C7C58DDBEB}"
 EndProject
 Global

@@ -16,7 +16,6 @@ namespace Simpatia.Data.repositories
             _Noticias = mongoDB._database.GetCollection<NoticiasSchema>("Noticias");
         public async Task<Noticia> Inserir(NoticiaDto noticiaDto)
         {
-            var buscaNoticia =  await _Noticias.FindAsync(r => r.NoticiaId.Equals(noticiaDto.NoticiaId));
             var noticia = new NoticiasSchema
             {
                 NoticiaId = noticiaDto.NoticiaId.ToString(),
@@ -25,12 +24,7 @@ namespace Simpatia.Data.repositories
                 Data = Convert.ToDateTime(noticiaDto.Data),
                 Fonte = noticiaDto.Fonte,
             };
-            if (buscaNoticia != null)
-            {
-                _Noticias.ReplaceOne(e => e.NoticiaId.Equals(noticia.NoticiaId), noticia);
-                return noticia.ConverterParaDomain();
-            }
-            _Noticias.InsertOne(noticia);
+            await _Noticias.InsertOneAsync(noticia);
             return noticia.ConverterParaDomain();
         }
 

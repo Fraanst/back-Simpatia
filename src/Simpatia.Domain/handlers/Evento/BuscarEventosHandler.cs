@@ -7,7 +7,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Eventos;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers.Evento
+namespace Simpatia.Domain.handlers.Evento
 {
     public class BuscarEventosHandler : CommandHandler, IRequestHandler<BuscarEventosCommand, CommandResponse>
     {

@@ -7,7 +7,7 @@ using Simpatia.Domain.shared.commands;
 using Simpatia.Domain.shared.commands.Noticias;
 using Simpatia.Domain.shared.Handlers;
 
-namespace Simpatia.App.handlers.Noticia
+namespace Simpatia.Domain.handlers.Noticia
 {
     public class BuscarNoticiasHandler : CommandHandler, IRequestHandler<BuscarNoticiasCommand, CommandResponse>
     {
